@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container-fluid my-5">
+   <div class=" p-5 m-1">
+       <center> <p class="display-5" style="font-weight: bold;">Your Cart</p></center>
+        
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image & product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for product in products %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt="">
+                    {{product.name}}</td>
+                    <td>{{product.price|currency}}</td>
+                    <td>{{product|cart_quantity:request.session.cart}}</td>
+                    <td>{{product|price_total:request.session.cart|currency}}</td>
+                </tr>
+
+                {% endfor %}
+               
+            </tbody>
+          </table>
+          
+          
+            <p style="font-size:2em; font-weight: bold; margin-left:1110px;">Total: Rs. {{products|total_cart_price:request.session.cart|currency}}.00</p>
+
+              <a style="background-color: red; margin-left: 1010px;"  href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger border rounded  col-lg-3 ">Check out</a><br>
+              <a href="/" style="color: red; margin-left: 1010px;">Continue Shoping</a>
+
+        <!-- <div class="m-3 p-3 ">
+          <p style="font-size:2em; font-weight: bold;">Total: Rs. {{products|total_cart_price:request.session.cart|currency}}</p>
+
+            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded  col-lg-3 float-right">Check out</a>
+        </div> -->
+   </div>
+</div> 
+
+
+
+<!-- modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              Check Out Form
+          </h5>
+          <hr>
+          <button style="background-color: red;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="m-2 p-3">
+            <form action="/check-out" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="">Address</label>
+                  <input type="text" name="address" id="" class="form-control" placeholder="Home" aria-describedby="helpId">
+                  
+                </div>
+                <div class="form-group">
+                    <label for="">Phone</label>
+                    <input type="text" name="phone" id="" class="form-control" placeholder="+91" aria-describedby="helpId">
+                  </div>
+
+                  <input style="margin-top: 20px; background-color: red;" type="submit" class="btn btn-danger border rounded  col-lg-6" value="Check out">
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+ <!-- marquee text -->
+ <div class="marquee-text section-id-1588226413994 pt-4" style="background-color: black; padding-bottom: 2px;">
+  <p class="text-center" style="font-size: 29px;color: #000;">
+    <marquee scrollamount="10">
+
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-white">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-white">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-white">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-white">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-white">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-white">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+      <span class="text-stroke">India’s No.1 Earwear Audio Brand.</span>
+
+    </marquee>
+  </p>
+</div>
+<style>
+  span.text-stroke {
+    -webkit-text-stroke: 1px white;
+    font-weight: bold;
+  }
+
+  span.text-white {
+    color: #fff;
+    font-weight: bold;
+  }
+</style>
+<!-- marquee text end -->
+
+
+
+<!-- SDC -->
+<div style="height: 75px; background-color:#1c1c1c;">
+  <center>
+  <div class="container">
+    <div class="row mx-5">
+      <div class="col-sm my-3">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/group_186_3x_4616a7a4-8c24-4065-a237-54e3d574bb94.png?v=1611132367"
+        height="30px" width="40px" alt="">  <b style="color: white; margin-left: 10px;">Free Shipping</b>      </div>
+      <div class="col-sm my-3">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/vector_3x_50a1233e-95d9-4e18-9e8e-757b545e2c06.png?v=1611132367"
+        height="30px" width="40px" alt=""> <b style="color: white; margin-left: 10px;">Exclusive Deals</b>       </div>
+      <div class="col-sm my-3">
+        <img
+        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/vector_2_2x_9d5071e2-154a-4f06-b660-9d0430a18248.png?v=1611132367"
+        height="30px" width="40px" alt="">  <b style="color: white; margin-left: 10px;">
+          Secure Checkout</b>      </div>
+    </div>
+  </div>
+</div>
+</center>
+<!-- End SDC   -->
+
+
+
+<!-- Slogn -->
+
+<div style="height: 75px; background-color:#2c2c2c;">
+  <center>
+  <div class="container">
+    <div class="col-12">
+      <b style="color: mintcream; font-size:0.8em;"><p>
+      India's fastest growing audio & wearables brand. The most incredible range of wireless earphones, earbuds, headphones, smart watches, and home</p>
+      <p style="margin-top:-10px;"> audio. From workouts to adventures, boAt will get you sailing! </p>     </div>
+    </b>
+    </div>
+</center>
+<!-- End slogan -->
+
+
+
+
+  <!-- Footer -->
+  <footer style="background-color: black;">
+    <div class="container py-5">
+      <div class="row py-4">
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Boat-Logo_200x.png?v=1600753267" alt="" width="180" class="mb-3">
+          <p class="font-italic text-muted">Subscribe to email alerts. We promise not to spam your inbox</p>
+          <div class="p-1 rounded border">
+            <div class="input-group">
+              <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+              <div class="input-group-append">
+                <button id="" type="submit" class="btn btn-link"><i  class="fas fa-globe-africa" style="color: white;"></i></button>
+              </div>
+            </div>
+          </div>
+          <!-- <ul class="list-inline mt-4">
+            <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fas fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fas fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fas fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fas fa-pinterest"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fas fa-vimeo"></i></a></li>
+          </ul> -->
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0" >
+          <h6 class="text-uppercase font-weight-bold mb-4" style="color: white;">Shop</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="#" class="text-muted">True Wireless Earbuds</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Wireless Headphones</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Wired Headphones</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Wireless Speakers</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Home Audio</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Mobile Accessories</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Smart Watchs</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">TRebel</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">MisFit</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Gift Card</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Rock india</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Earn Rs100.</a></li>
+
+
+
+
+
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4" style="color: white;">Company</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="#" class="text-muted">About boAt</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">News</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Read Our Blog</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Social Responsibility</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">High5boAtheads</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Our Partner</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Terms Of Service</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Privace Policy</a></li>
+
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4" style="color: white;">help</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="#" class="text-muted">Track your Order</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Warranty & Support</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Return policy</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Scrvice center</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">FAQs</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Why Buy Direct</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyrights -->
+    <div class="bg-black">
+      <div class="container text-center">
+        <p class="text-muted mb-0 py-2">© 2021 boAt All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- End -->
+
+<style>
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+/* body {
+background: #ff5f6d;
+background: -webkit-linear-gradient(to right, #ff5f6d, #ffc371);
+background: linear-gradient(to right, #ff5f6d, #ffc371);
+min-height: 100vh;
+} */
+
+#button-addon1 {
+color:white;
+}
+.text-muted {
+text-decoration-line: none;
+}
+/* i {
+color: #f5f3f0;
+} */
+
+.form-control::placeholder {
+font-size: 0.95rem;
+color: #aaa;
+font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+box-shadow: none;
+}
+
+</style>  
+
+<!-- End footer -->
+</body>
+
+</html>
+
+{% endblock %}

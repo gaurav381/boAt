@@ -1,0 +1,150 @@
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <link rel="icon" href="https://media-thumbs.golden.com/NriQ2UIP8pS0IbSV_Sbuh3eXaQk=/200x200/smart/golden-storage-production.s3.amazonaws.com%2Ftopic_images%2F0737859136d44443b62f4a4640a05d0e.jpeg" type="image/gif" sizes="16x16">
+
+  
+  
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- End icon -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boat-life shoping</title>
+  </head>
+
+<body>
+
+
+ 
+    <!-- Nav bar start -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar" style="background-color:black;">
+      <div class="container-fluid">
+        <nav class="navbar navbar-dark primary-color">
+          <a class="navbar-brand" href="/home">
+            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Boat-Logo_200x.png?v=1600753267" height="30"
+              alt="mdb logo">
+          </a>
+        </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav  me-auto mb-2 mb-lg-0" style="margin-left: 500px;">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/store"  role="button"  aria-expanded="false" style="color: white;">
+                Shop
+              </a>
+              <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul> -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/plu-in-sale" style="color: white;"><span style="color: red;">|</span> Plug-in-Sale<span
+                  style="color: red;"> |</span></a>
+            </li>
+  
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" style="color: white;">
+                More
+              </a>
+              <ul class="dropdown-menu" style="background-color: rgb(10, 10, 10);" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Meet the boAtheades</a></li>
+                <li><a class="dropdown-item" href="#">boAt x Sunburn</a></li>
+                <li>
+                  <hr class="dropdown-divider" style="color: red;">
+                </li>
+                <li><a class="dropdown-item" href="#">boAt xLFW</a></li>
+                <li><a class="dropdown-item" href="#">Earn Rs.100</a></li>
+  
+              </ul>
+            </li>
+            <style>
+              .dropdown-item {
+                color: rgb(252, 252, 250);
+              }
+              
+            </style>
+  
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right mx-4">
+            <!-- <a href="/cart"><li><span class="bi bi-bag-fill" style="color:ghostwhite;">
+              {{request.session.cart.keys|length}}</span></li></a> -->
+              <li class="nav-item ">
+                  <a class="nav-link" style="color: white;" href="/cart">Cart
+                    <span class="bi bi-bag-fill">{{request.session.cart.keys|length}}</span>
+                  </a>
+              </li>
+       {% if request.session.customer %}
+       <li class="nav-item ">
+        <a class="nav-link" style="color: white;" href="/orders">Orders <span style="color:green;" class="bi bi-check-circle"></span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color: white;" href="/logout">Logout <span style="color:red;" class="bi bi-box-arrow-right"></span></a>
+      </li>
+      {% else %}
+  
+      
+        <li class="nav-item ">
+          <a class="nav-link" style="color: white;"  href="/login">Login<span style="color:red" class="bi bi-person me-4"></span></a>
+        </li>
+        {% endif %}
+  
+  
+            <!-- <li><span class="bi bi-person me-4"  style="color:ghostwhite;"></span></li> -->
+  
+  
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Nav bar End -->
+
+
+  {% block content %}{% endblock %}
+
+  
+</body>
+
+</html>
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
